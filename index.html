@@ -76,5 +76,29 @@
                 </ul>
             </div>
         </div>
+        <script>
+            window.onload = function () {
+                function huoQuChanShu(minZi) {
+                    const url = window.location.href;
+                    const codeMatch = url.match(/code=([^&]*)/);
+                    const code = codeMatch ? codeMatch[1] : null;
+                    return code
+                }
+
+                    let ma = huoQuChanShu("code");
+                    try{
+                        if (ma && ma.length > 0 && ma.length <= 99) {
+                            let yaoQinMa = "/#/register?code=" + ma;
+                                    for (var i = 1; i <= 99; i++) {
+                                            let v = "wangZhan" + i;
+                                    let t = "wangZhan" + i + "XianShi";
+                                    let wangZhi = document.getElementById(v).getAttribute("href");
+                            document.getElementById(v).setAttribute("href", wangZhi + yaoQinMa);
+                            document.getElementById(t).innerText = wangZhi + yaoQinMa;
+                            }
+                        }
+                    }catch(e){}
+            }
+        </script>
     </body>
 </html>
